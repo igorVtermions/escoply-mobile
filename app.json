@@ -22,7 +22,8 @@
         "backgroundColor": "#F8FAFC"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.igorvtermions.escoplymobile"
     },
     "web": {
       "bundler": "metro",
@@ -34,6 +35,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "615c27da-1d8f-4b46-aafe-0e6621b4a18d"
+      }
     }
   }
 }
