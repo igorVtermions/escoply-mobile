@@ -1,68 +1,101 @@
 # Escoply
 
-Aplicativo mobile para freelancers organizarem clientes, projetos, escopos, orçamentos, aprovações, materiais, prazos, lembretes e compromissos recorrentes em um só lugar.
+**Do briefing à entrega, tudo no controle.**
 
-> Do briefing à entrega, tudo no controle.
+O Escoply é um aplicativo mobile criado para freelancers que precisam organizar clientes, projetos, escopos, orçamentos, aprovações, materiais, prazos e compromissos recorrentes sem depender de conversas espalhadas, planilhas soltas ou memória.
 
-## Screenshots
-
-O Escoply é um app mobile. Por isso, em vez de um link público de acesso, este README mostra as telas principais em formato de preview.
-
-| Login | Recuperar senha | Cadastro |
-| --- | --- | --- |
-| <img src="./docs/screenshots/login.svg" alt="Tela de login do Escoply" width="260" /> | <img src="./docs/screenshots/forgot-password.svg" alt="Tela de recuperação de senha do Escoply" width="260" /> | <img src="./docs/screenshots/register.svg" alt="Tela de cadastro do Escoply" width="260" /> |
-
-## Ideia Geral
-
-O Escoply nasceu para resolver uma dor comum de freelancers: informações importantes ficam espalhadas entre WhatsApp, e-mail, arquivos, planilhas, anotações e memória.
-
-O app centraliza o fluxo do trabalho freelance:
+Ele nasce com uma proposta simples: transformar a rotina do freelancer em um fluxo claro, visual e fácil de acompanhar.
 
 ```txt
 Cliente -> Projeto -> Escopo -> Orçamento -> Aprovação -> Entrega -> Pagamento
 ```
 
+## Preview Do App
+
+O Escoply é um produto mobile. Por isso, este projeto não disponibiliza um link web público de acesso. A experiência deve ser testada em emulador, dispositivo físico ou build Android/iOS.
+
+As imagens abaixo devem ser screenshots reais do app:
+
+| Login | Recuperar senha | Cadastro |
+| --- | --- | --- |
+| <img src="./docs/screenshots/login.png" alt="Tela de login do Escoply" width="260" /> | <img src="./docs/screenshots/forgot-password.png" alt="Tela de recuperação de senha do Escoply" width="260" /> | <img src="./docs/screenshots/register.png" alt="Tela de cadastro do Escoply" width="260" /> |
+
+Arquivos esperados:
+
+```txt
+docs/screenshots/login.png
+docs/screenshots/forgot-password.png
+docs/screenshots/register.png
+```
+
+## Por Que O Escoply Existe?
+
+Freelancers lidam com várias frentes ao mesmo tempo:
+
+- cliente pedindo orçamento;
+- projeto em andamento;
+- escopo aprovado parcialmente;
+- material perdido em conversas;
+- cobrança pendente;
+- prazo chegando;
+- entrega esperando aprovação;
+- obrigação recorrente esquecida.
+
+O Escoply organiza tudo isso em uma central única para que o profissional saiba o que precisa fazer, o que está pendente e o que já foi combinado com cada cliente.
+
+## Proposta De Valor
+
+Com o Escoply, o freelancer ganha:
+
+- visão clara do dia de trabalho;
+- histórico por cliente;
+- controle de projetos em andamento;
+- escopos documentados;
+- orçamentos acompanháveis;
+- aprovações registradas;
+- lembretes importantes;
+- menos retrabalho e menos informação perdida.
+
 ## Funcionalidades Planejadas
 
-- Autenticação de usuários.
-- Cadastro e gestão de clientes.
-- Cadastro e acompanhamento de projetos.
-- Checklist de escopo por projeto.
-- Orçamentos e status de envio/aprovação.
+- Autenticação com login, cadastro e recuperação de senha.
+- Cadastro de clientes.
+- Cadastro de projetos.
+- Checklist de escopo.
+- Orçamentos por projeto.
 - Aprovações importantes.
 - Materiais e referências.
-- Lembretes gerais e lembretes por projeto.
+- Lembretes gerais e por projeto.
 - Obrigações recorrentes.
 - Pagamentos e valores a receber.
-- Dashboard com resumo do dia.
+- Dashboard com visão geral do trabalho.
 
 ## Status Atual
 
 Implementado:
 
 - Estrutura base com Expo Router.
-- Identidade visual inicial.
+- Design inicial do fluxo de autenticação.
 - Tela de login.
 - Tela de cadastro com:
   - nome;
   - e-mail;
   - telefone;
   - data de nascimento;
-  - bloqueio para menores de 16 anos;
+  - idade mínima de 16 anos;
   - senha forte;
   - confirmação de senha;
   - aceite de termos de uso em bottom sheet.
 - Tela de recuperação de senha.
 - Toasts personalizados.
-- Guia de padrão do projeto em `AGENTS.md`.
+- Guia de padrão de projeto em `AGENTS.md`.
 
-Ainda pendente:
+Em desenvolvimento:
 
-- Integração real com Supabase Auth.
-- Banco de dados e policies RLS.
+- Integração com Supabase Auth.
+- Persistência de sessão.
 - Dashboard.
-- CRUD de clientes e projetos.
-- Módulos de escopo, orçamento, aprovações, materiais, lembretes e pagamentos.
+- Módulos de clientes e projetos.
 
 ## Stack
 
@@ -76,20 +109,20 @@ Ainda pendente:
 - AsyncStorage
 - Expo Vector Icons
 
-## Back-end
+## Back-end Planejado
 
-A arquitetura planejada usa Supabase como base principal:
+O back-end será baseado em Supabase:
 
 ```txt
 React Native -> Supabase Auth -> Postgres com RLS -> Storage
 ```
 
-Uso recomendado:
+Uso previsto:
 
-- Supabase Auth para login, cadastro e recuperação de senha.
-- Postgres com RLS para dados de usuários, clientes, projetos e tarefas.
-- Storage para anexos e materiais.
-- Edge Functions apenas para integrações sensíveis, webhooks, notificações e rotinas que exigem `service_role`.
+- Supabase Auth para autenticação.
+- Postgres com RLS para dados por usuário.
+- Storage para arquivos, materiais e anexos.
+- Edge Functions apenas para ações sensíveis, webhooks, notificações e integrações externas.
 
 ## Estrutura Do Projeto
 
@@ -119,18 +152,19 @@ docs/
   screenshots/
 ```
 
-## Design E UX
+## Design
 
-Direção visual:
+A interface segue uma direção visual limpa, moderna e objetiva:
 
 - fundo claro;
 - cards brancos;
 - azul escuro como cor principal;
 - bordas suaves;
-- sombra discreta;
-- formulários limpos;
-- feedback visual por toast e bottom sheet;
-- fluxo mobile-first.
+- sombras discretas;
+- formulários simples;
+- feedback por toast;
+- bottom sheets para ações contextuais;
+- experiência mobile-first.
 
 Paleta principal:
 
@@ -164,7 +198,7 @@ Inicie o Expo:
 npx expo start
 ```
 
-Se estiver com cache antigo:
+Com cache limpo:
 
 ```bash
 npx expo start -c
@@ -178,8 +212,6 @@ npx expo start --android
 
 ## Variáveis De Ambiente
 
-Crie ou atualize o arquivo `.env`:
-
 ```env
 EXPO_PUBLIC_SUPABASE_URL=
 EXPO_PUBLIC_SUPABASE_ANON_KEY=
@@ -192,7 +224,7 @@ EXPO_PUBLIC_API_URL=
 npx eas build --profile development --platform android
 ```
 
-Se for a primeira configuração do EAS:
+Primeira configuração do EAS:
 
 ```bash
 npx eas build:configure
@@ -216,14 +248,14 @@ npx expo-doctor
 
 1. Conectar Supabase Auth.
 2. Criar tabela `profiles`.
-3. Criar navegação principal por tabs.
-4. Implementar Dashboard.
-5. Implementar Clientes.
-6. Implementar Projetos.
-7. Implementar Escopo.
-8. Implementar Orçamentos.
-9. Implementar Aprovações e Materiais.
-10. Implementar Lembretes, Obrigações e Pagamentos.
+3. Implementar sessão persistente.
+4. Criar navegação principal por tabs.
+5. Implementar Dashboard.
+6. Implementar Clientes.
+7. Implementar Projetos.
+8. Implementar Escopo.
+9. Implementar Orçamentos.
+10. Implementar Aprovações, Materiais, Lembretes e Pagamentos.
 
 ## Licença
 
