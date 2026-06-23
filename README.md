@@ -20,13 +20,6 @@ As imagens abaixo devem ser screenshots reais do app:
 | --- | --- | --- |
 | <img src="./docs/screenshots/login.png" alt="Tela de login do Escoply" width="260" /> | <img src="./docs/screenshots/forgot-password.png" alt="Tela de recuperação de senha do Escoply" width="260" /> | <img src="./docs/screenshots/register.png" alt="Tela de cadastro do Escoply" width="260" /> |
 
-Arquivos esperados:
-
-```txt
-docs/screenshots/login.png
-docs/screenshots/forgot-password.png
-docs/screenshots/register.png
-```
 
 ## Por Que O Escoply Existe?
 
