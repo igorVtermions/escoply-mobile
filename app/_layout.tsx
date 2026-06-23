@@ -1,5 +1,6 @@
 import { Stack } from 'expo-router';
 import { QueryClientProvider } from '@tanstack/react-query';
+import '../global.css';
 import 'react-native-reanimated';
 import { AuthProvider } from '@/src/providers/AuthProvider';
 import { queryClient } from '@/src/lib/query-client';
@@ -15,6 +16,7 @@ export default function RootLayout() {
       <AuthProvider>
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="index" />
+          <Stack.Screen name="(auth)" />
           <Stack.Screen name="+not-found" />
         </Stack>
       </AuthProvider>

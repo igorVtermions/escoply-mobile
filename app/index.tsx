@@ -1,5 +1,5 @@
-import { View } from 'react-native';
+import { Redirect } from 'expo-router';
 
 export default function IndexScreen() {
-  return <View className="flex-1 bg-background" />;
+  return <Redirect href={'/(auth)/login' as never} />;
 }
